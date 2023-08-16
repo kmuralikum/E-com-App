@@ -1,0 +1,41 @@
+route.post("/",async(req,res)=>{
+
+    const newOrder=new order({      
+        orderItems:req.body.orderItems,
+        shippingAddress: req.body.shippingAddress,
+        shippingAddress2: req.body.shippingAddress2,
+        city: req.body.city,
+        country: req.body.country,
+        phone: req.body.phone,
+        status: req.body.status,
+        totalPrice: req.body.totalPrice,
+        user: req.body.user
+    })
+
+    newOrder
+    // .save()
+    if(!order){
+        res.status(400).json({msg:"Order cannot be Submitted"})
+    }
+    res.send(order)
+    // .then((order)=>{
+      
+    // })
+    // .catch((err)=>{res.json({error:err})})
+})
+
+-----------------------------------------------------------------------------------------------------
+
+   // // first we need to get array of obj (orderitems) from the req
+    // const {orderItems} = req.body;
+    // //now iterate each item and store it the db
+    // const data = orderItems.map(item=>{
+    //     // print each item
+    //     // console.log(item);
+    //     // create a orderitem
+    //     let response = new order_item(item)
+    //     response.save()
+    //     const serialize = JSON.stringify(response._id)
+    //     return serialize;
+    // })
+    // // console.log(data);
